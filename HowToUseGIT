@@ -11,8 +11,6 @@ Initial clone:
 To Pull:
 	git pull
 
-Get Status:
-	git status
 
 Add Files:
 	git add -A
@@ -23,3 +21,12 @@ commit files:
 To Push
 	git push
 
+
+Other Useful Commands:
+	
+	Save credentials
+		git config credential.helper store
+		git push https://github.com/maxomous/agro4.git
+	Get Status:
+		git status
+	
