@@ -2,7 +2,7 @@
 *.d
 
 # Geany Compiler files
-*.geany
+Agroforestry.geany
 
 # Object files
 *.o
