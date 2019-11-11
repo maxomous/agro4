@@ -8,25 +8,43 @@ Initial clone:
 	git clone https://github.com/maxomous/agro4.git
 
 
-To Pull:
+When logging on we want to download the latest master branch. To do this, select the master branch
+
+	git checkout master
+
+Then update with the latest src code
+
 	git pull
 
+Now we have the latest src code, we can create a new branch for our changes
 
-Add Files:
+	git checkout -b newbranch
+
+Then we make some changes to the src code, and add these to the branch
+
 	git add -A
 
-commit files:
-	git commit -m "your message"
+We then need to commit them
 
-To Push
+	git commit -m "message"
+
+And finally push them to the master branch
+
+	git push 
+
+*NOTE - if creating a branch which is further ahead than the master branch, you will need to write...
+
+	git push --set-upstream origin newbranch
+
+Then switch back to the master branch
+
+	git checkout master
+
+and merge the 2 branches together
+
+	git merge newbranch
+
+you will then need to push the new master branch again to update
+
 	git push
 
-
-Other Useful Commands:
-	
-	Save credentials
-		git config credential.helper store
-		git push https://github.com/maxomous/agro4.git
-	Get Status:
-		git status
-	
