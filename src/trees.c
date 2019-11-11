@@ -11,7 +11,7 @@ tree_t trees[MAX_TREES];
 #define MAX_SPECIES 20
 species_t species[MAX_SPECIES];
 
-max why haven't you done the things ou said and pomised mate'
+jamie dont worry mate i got it sorted 
 
 void addTree(tree_t t) {
 
