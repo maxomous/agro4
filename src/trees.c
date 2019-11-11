@@ -101,7 +101,7 @@ void addSpecies()
 	species[0].growthRate = 1.5;	// metres wide / yr
 	species[0].fullSizeAge = 5;
 	species[0].maxSize = species[0].growthRate * species[0].fullSizeAge;
-	species[0].mineralExtract = 0.4;
+	species[0].mineralExtract = 0.7;
 	
 	strncpy(species[1].name, "Birch", MAX_STRING);
 	species[1].mineralAccum = FALSE;

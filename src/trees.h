@@ -17,6 +17,15 @@ typedef struct{
 	
 }tree_t;
 
+// succession layers:
+#define LAYER_HIGH_TREES	1
+#define LAYER_SMALL_TREES	2
+#define LAYER_SHRUBS		3
+#define LAYER_PERENIALS		4
+#define LAYER_GROUND_COVER	5
+#define LAYER_ROOT_CROPS	6
+#define LAYER_CLIMIBERS		7
+
 typedef	struct {
 	
 	char name[MAX_STRING];
@@ -27,6 +36,7 @@ typedef	struct {
 	float maxSize;
 	float fullSizeAge;
 	float mineralExtract;
+	int successionLayer;
 	
 }species_t;
 
