@@ -11,8 +11,8 @@ tree_t trees[MAX_TREES];
 #define MAX_SPECIES 20
 species_t species[MAX_SPECIES];
 
-int JAMIE IS A LEG;
-int HELLLLLLLOOOOO;
+max why haven't you done the things ou said and pomised mate'
+
 void addTree(tree_t t) {
 
 	if (noTrees >= MAX_TREES) { 
