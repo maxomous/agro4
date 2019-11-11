@@ -3,7 +3,6 @@
 #include "agro4_gui.h"
 #include "trees.h"
 
-int gitHubCheck = TRUE;
 int noTrees = 0;
 #define MAX_TREES 20
 tree_t trees[MAX_TREES];
@@ -11,7 +10,6 @@ tree_t trees[MAX_TREES];
 #define MAX_SPECIES 20
 species_t species[MAX_SPECIES];
 
-here are some changess, i'll email you;
 
 void addTree(tree_t t) {
 
@@ -68,10 +66,13 @@ void updateAllTrees() {
 		t = &trees[i];
 		t->age = t->baseAge + currentTime;
 		
-			t->width = t->age * species[t->speciesID].growthRate;
+		t->width = t->age * species[t->speciesID].growthRate;
 		if (t->width > species[t->speciesID].maxSize)
 			t->width = species[t->speciesID].maxSize;
-			
+		t->width_trunk = t->age * species[t->speciesID].growthRate_trunk;
+		if (t->width_trunk > species[t->speciesID].maxSize_trunk)
+			t->width_trunk = species[t->speciesID].maxSize_trunk;
+		
 		//t->width = t->age * species[t->speciesID].growthRate;
 		if(t->width < 0.3)
 			t->width = 0.3;
@@ -96,20 +97,25 @@ void updateAllTrees() {
 
 void addSpecies() 
 {
+	
 	strncpy(species[0].name, "Willow", MAX_STRING);
 	species[0].mineralAccum = TRUE;
 	species[0].nitrogenMultiplier = 2;
 	species[0].growthRate = 1.5;	// metres wide / yr
+	species[0].growthRate_trunk = 0.2;	// metres wide / yr
 	species[0].fullSizeAge = 5;
 	species[0].maxSize = species[0].growthRate * species[0].fullSizeAge;
+	species[0].maxSize_trunk = species[0].growthRate_trunk * species[0].fullSizeAge;
 	species[0].mineralExtract = 0.7;
 	
 	strncpy(species[1].name, "Birch", MAX_STRING);
 	species[1].mineralAccum = FALSE;
 	species[1].nitrogenMultiplier = 0;
 	species[1].growthRate = 1.7;
-	species[1].fullSizeAge = 10;
+	species[1].growthRate_trunk = 0.3;
+	species[1].fullSizeAge = 8;
 	species[1].maxSize = species[1].growthRate * species[1].fullSizeAge;
+	species[1].maxSize_trunk = species[1].growthRate_trunk * species[1].fullSizeAge;
 	species[1].mineralExtract = -0.3;
 }
 
@@ -142,6 +148,7 @@ void sowSeeds()
 void trees_init() 
 {
 	displayList_Tree();	// create the tree graphics
+	displayList_Trunk();
 	addSpecies();
 	sowSeeds();
 }
@@ -185,6 +192,7 @@ int checkOverlap(int X,int Y) {
 
 #define MAX_TREE_TYPES 20
 GLint index_Tree[MAX_TREE_TYPES];
+GLint index_Trunk;
 
 void displayList_Tree() 
 {	
@@ -240,7 +248,31 @@ void displayList_Tree()
 		glEndList();
 	}
 }
+void displayList_Trunk() 
+{	
+	point2D p;
+	index_Trunk = glGenLists(1);
+	glNewList(index_Trunk, GL_COMPILE);		//GL_COMPILE or GL_COMPILE_AND_EXECUTE
+		//~ glColor3f(0.75f, 0.75f, 0.75f);
+		glLineWidth(1.0);
+		glBegin(GL_POLYGON);
+		for (float th = 0; th < 2*PI; th += Deg2Rad(5))
+		{
+			p = PointFromPolar((point2D){.x = 0, .y = 0}, 1, th);
+			glVertex2f(p.x, p.y);
+		}
+		glEnd();
+		glBegin(GL_LINE_LOOP);
+		glColor3f(0.2f, 0.2f, 0.2f);
+		for (float th = 0; th < 2*PI; th += Deg2Rad(5))
+		{
+			p = PointFromPolar((point2D){.x = 0, .y = 0}, 1, th);
+			glVertex2f(p.x, p.y);
+		}
+		glEnd();
+	glEndList();
 
+}
 void treeDrawing(point2D p, float r, uint noLeaves) 
 {
 	if(noLeaves == 0) {
@@ -260,9 +292,25 @@ void treeDrawing(point2D p, float r, uint noLeaves)
 }
 
 
+void trunkDrawing(point2D p, float r) 
+{
+	glPushMatrix();
+		glTranslatef(p.x,p.y,0);
+		glScalef(r, r, r);
+		//~ glRotatef((GLfloat)Rad2Deg(20), 0,0,1);	// rotate about z
+		glCallList(index_Trunk);
+	glPopMatrix();
+    
+}
+
+
 void drawTree(int id) {
 	
 	tree_t t = trees[id];	// use pointer for any modifications
+	
+	glColor3f(0.4f, 0.15f, 0.1f);
+	trunkDrawing(t.location, t.width_trunk/2);
+	
 	if (t.isTooClose)
 		glColor3f(1.0f, 0.0f, 0.0f);
 	else
@@ -270,10 +318,17 @@ void drawTree(int id) {
 	
 	float numLeaves = t.age;
 	if (numLeaves > species[t.speciesID].fullSizeAge)
-	{
 		numLeaves = species[t.speciesID].fullSizeAge;
-	}
 	treeDrawing(t.location, t.width/2, numLeaves+2);
+	
+	glColor3f(0.1f, 0.65f, 0.1f);
+	if(t.width > 4)  
+		treeDrawing(t.location, 4/2, 3);
+	if(t.width > 10) 
+		treeDrawing(t.location, 10/2, 7);
+	
+	
+	
 	float nitrogenWidth = getNitrogenWidth(id);
 	if(nitrogenWidth){
 		glColor3f(0.5f, 0.5f, 0.5f);

@@ -11,6 +11,7 @@ typedef struct{
 	float age;
 	float baseAge;
 	float width;		// growthRate * age;
+	float width_trunk;	// trunkgrowthRate * age;
 	int isTooClose;		// if(L < r1+r2)
 	int hasNitrogen;	// if(
 	int hasMineral;
@@ -27,13 +28,14 @@ typedef struct{
 #define LAYER_CLIMIBERS		7
 
 typedef	struct {
-	
 	char name[MAX_STRING];
 	float growthRate;
+	float growthRate_trunk;
 	// vertical growth rate
 	float nitrogenMultiplier;
 	int mineralAccum;
 	float maxSize;
+	float maxSize_trunk;
 	float fullSizeAge;
 	float mineralExtract;
 	int successionLayer;
@@ -48,6 +50,7 @@ extern void moveTree(int id, int dx, int dy);
 extern void moveAndUpdate(int currentID, int dx, int dy);
 extern void updateAllTrees();
 extern void trees_init();
-extern void displayList_Tree();
+void displayList_Tree();
+void displayList_Trunk();
 extern float totalMineral();
 #endif
