@@ -28,14 +28,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=138;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2Fagro4.c;0;4
-FILE_NAME_1=43;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2FstandardShit.c;0;4
-FILE_NAME_2=860;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2FstandardShit.h;0;4
-FILE_NAME_3=1177;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2Fagro4_gui.c;0;4
-FILE_NAME_4=377;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2Fagro4_gui.h;0;4
-FILE_NAME_5=3135;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2Ftrees.c;0;4
-FILE_NAME_6=783;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Fprojects%2FAgroforestry%2Ftrees.h;0;4
+current_page=5
+FILE_NAME_0=0;C;0;EUTF-8;2;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2FstandardShit.c;0;4
+FILE_NAME_1=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2FstandardShit.h;0;4
+FILE_NAME_2=183;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2Fagro4.c;0;4
+FILE_NAME_3=0;C;0;EUTF-8;2;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2Fagro4_gui.c;0;8
+FILE_NAME_4=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2Fagro4_gui.h;0;4
+FILE_NAME_5=0;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2Ftrees.c;0;4
+FILE_NAME_6=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FDesktop%2FJamies_Projects%2Fagro4%2Fsrc%2Ftrees.h;0;4
 
 [VTE]
 last_dir=/home/pi
