@@ -1,0 +1,25 @@
+
+
+For All Below, move to correct directory:
+	cd /home/pi/projects/agro4
+
+
+Initial clone:
+	git clone https://github.com/maxomous/agro4.git
+
+
+To Pull:
+	git pull
+
+Get Status:
+	git status
+
+Add Files:
+	git add -A
+
+commit files:
+	git commit -m "your message"
+
+To Push
+	git push
+
