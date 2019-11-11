@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# Geany Compiler files
+*.geany
+
 # Object files
 *.o
 *.ko
