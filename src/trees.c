@@ -3,7 +3,7 @@
 #include "agro4_gui.h"
 #include "trees.h"
 
-
+int gitHubCheck = TRUE;
 int noTrees = 0;
 #define MAX_TREES 20
 tree_t trees[MAX_TREES];
